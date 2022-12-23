@@ -6,7 +6,7 @@ def phit():
     playerhand.append(playercard3)
     playerhandaddhit = sum(playerhand)
     print(playerhandaddhit)
-    pchoice()
+    #pchoice()
 
 def dhit():
     print("Dealer hits")
@@ -32,20 +32,20 @@ def deal():
 def dealershow():
     while sum(dealerhand) <= 16:
         dhit()
-        if dealerhandaddhit > 21:
+        if sum(dealerhand) > 21:
             print ("Dealer busts, You win!")
             start()
-            if dealerhandaddhit <= 21:
+            if sum(dealerhand) <= 21:
                 print("Dealer Shows")
                 print(sum(dealerhand))
                 start()
-                if dealerhandaddhit2 > 21:
+                if sum(dealerhand) > 21:
                     print ("Dealer busts, You win!")
                     start()
-    elif sum(dealerhand) >= 16:
-        print("Deal shows")
-        print(sum(dealerhand))
-        start()
+        elif sum(dealerhand) >= 16:
+            print("Deal shows")
+            print(sum(dealerhand))
+            start()
 
 
 
@@ -65,7 +65,7 @@ def pchoice():
     playerchoice = input("Would you like to hit or stand: ");
     if playerchoice == "hit":
         phit()
-        if playerhandaddhit > 21:
+        if sum(playerhand) > 21:
             print ("Player Busts, You Lose!")
             dealershow()
         else:
