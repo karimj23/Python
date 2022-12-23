@@ -1,5 +1,21 @@
 import random
 
+def phit():
+    print("Player hits")
+    playercard3 = random.randint(1,11)
+    playerhand.append(playercard3)
+    playerhandaddhit = sum(playerhand)
+    print(playerhandaddhit)
+    pchoice()
+
+def dhit():
+    print("Dealer hits")
+    dealercard3 = random.randint(1,11)
+    dealerhand.append(dealercard3)
+    dealerhandaddhit = sum(dealerhand)
+    print(dealerhandaddhit)
+
+
 def deal():
     while len(dealerhand) < 2:
         dealercard = random.randint(1,11)
@@ -14,26 +30,14 @@ def deal():
         print (dealerhandshow)
 
 def dealershow():
-    if sum(dealerhand) <= 16:
-        print("Dealer shows")
-        print(sum(dealerhand))
-        print("Dealer hits")
-        dealercard3 = random.randint(1,11)
-        dealerhand.append(dealercard3)
-        dealerhandaddhit = sum(dealerhand)
-        print(dealerhandaddhit)
-        start()
+    while sum(dealerhand) <= 16:
+        dhit()
         if dealerhandaddhit > 21:
             print ("Dealer busts, You win!")
             start()
-        if dealerhandaddhit <= 16:
-            print("Dealer hits")
-            dealercard4 = random.randint(1,11)
-            dealerhand.append(dealercard4)
-            dealerhandaddhit2 = sum(dealerhand)
             if dealerhandaddhit <= 21:
                 print("Dealer Shows")
-                print(dealerhandaddhit2)
+                print(sum(dealerhand))
                 start()
                 if dealerhandaddhit2 > 21:
                     print ("Dealer busts, You win!")
@@ -43,6 +47,8 @@ def dealershow():
         print(sum(dealerhand))
         start()
 
+
+
 def peal():
     while len(playerhand) < 2:
         playercard = random.randint(1,11)
@@ -50,7 +56,7 @@ def peal():
         playerhand.append(playercard)
         playerhand.append(playercard2)
         global playerhandadd
-        playerhandadd = playerhand[0] + playerhand[1]
+        playerhandadd = sum(playerhand)
         show = "Player has"
         print (show)
         print (playerhand)
@@ -58,11 +64,7 @@ def peal():
 def pchoice():
     playerchoice = input("Would you like to hit or stand: ");
     if playerchoice == "hit":
-        print("Player hits")
-        playercard3 = random.randint(1,11)
-        playerhand.append(playercard3)
-        playerhandaddhit = sum(playerhand)
-        print(playerhandaddhit)
+        phit()
         if playerhandaddhit > 21:
             print ("Player Busts, You Lose!")
             dealershow()
